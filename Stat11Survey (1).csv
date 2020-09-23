@@ -1,0 +1,47 @@
+SiblingCount,Handedness,Major,SecondMajor ,Height,Shoe,Random,IceCream,Coffee,Sleep
+1,Right,Biochemistry,Philosophy,67,9.9,23,Mint chocolate chip,4,8
+2,Right,Biochemistry,Medical Anthropology,65.5,9.9,3,Mint chocolate chip,7,7.5
+3,Right,Biology,,75,11.6,984,Peanut butter chocolate,15,6.5
+2,Left,Biology,Neuroscience ,72,10.8,8,Vanilla,5,6
+3,Right,Biology,,69,10.9,4133,Cookies and Cream,3,4
+0,Left,Biology ,Psychology,70,10,16,Cookies and Cream,16,6
+2,Left,Biology ,,74,11.6,15,Vanilla,2,8
+1,Right,Black Studies,Economics,66,9.9,40,Mint chocolate chip,1,5
+3,Right,Chemistry,Medical Anthropology,69,10,27,Peanut butter chocolate,1,8
+2,Right,Computer Science,Mathematics,67,9.9,22,Vanilla,0,7.5
+2,Right,Computer Science,Mathematics,73,11.1,22,Cookies and Cream,2,7
+2,Left,Computer Science,Mathematics,72.5,11.1,3,Cookies and Cream,0,7
+4,Right,Computer Science,Economics,71,11,47,Vanilla,8,7
+1,Right,Computer Science,,65,9.4,8,Peanut butter chocolate,0,8
+1,Right,Computer Science,,69,10.4,1,Cookies and Cream,3,6.5
+2,Right,Computer Science,Statistics,71,11.5,5,Peanut butter chocolate,0,7
+3,Right,Computer Science,,67,9.4,3,Cookies and Cream,5,8
+4,Right,Computer Science,Mathematics,76,11.9,7,Mint chocolate chip,7,8
+1,Right,Computer Science,,70,11.3,7777,Cookies and Cream,21,7
+1,Right,Econ,Minor in English,67,10.1,3,Mint chocolate chip,2,7.5
+3,Right,Economics,,73,11.6,2,Vanilla,0,6
+1,Right,Economics,,69,10.9,35,Cookies and Cream,2,8
+3,Right,Economics,Psychology or Math,68,10.6,14,Cookies and Cream,1,7
+0,Right,Economics,Political Science,63,8.9,13,Peanut butter chocolate,5,9
+0,Right,Educational Studies,,64.6,9.1,13,Peanut butter chocolate,1,7
+2,Right,Engineering,,69,10,204,Cookies and Cream,7,6
+2,Left,English Literature,Computer Science,66,9.3,23,Peanut butter chocolate,5,9
+4,Right,Linguistics,Mathematics,68.5,10.3,44,Mint chocolate chip,15,7.5
+0,Right,Linguistics,Computer Science,68,9,26,Mint chocolate chip,10,5
+1,Right,Mathematics,,68,9.4,63,Mint chocolate chip,3,7
+4,Right,Mathematics,Chemistry,67,10.1,7,Cookies and Cream,8,8
+4,Right,Mathematics,Computer Science,67,9.1,1,Cookies and Cream,3,6
+2,Right,Neuroscience,,62,9.4,3,Mint chocolate chip,10,5
+3,Right,Neuroscience,,67,9.7,26,Cookies and Cream,15,7
+2,Right,Peace and Conflict Studies ,,68,10.9,88,Cookies and Cream,10,6
+1,Right,Peace and Conflict Studies ,Arabic Studies,68,10.2,64,Mint chocolate chip,26,6.5
+1,Right,Peace and Conflict Studies ,Social science,63,9.4,4,Peanut butter chocolate,4,7
+1,Right,Political Science,,68,10.1,12,Cookies and Cream,14,6
+3,Right,Political Science,Peace & Conflict Studies,63,8.9,4,Cookies and Cream,20,5
+5,Right,Psychology,Statistics,72,11.3,14,Mint chocolate chip,0,7
+2,Right,Psychology,Education,65,9.7,13,Cookies and Cream,20,7
+2,Right,Psychology,,65,9.9,72,Cookies and Cream,2,8
+2,Right,Psychology,Studio art,67,9.3,6,Peanut butter chocolate,6,9
+1,Right,Psychology,Biology,66,9.5,7,Cookies and Cream,1,8
+2,Right,Psychology,,67,9,11,Peanut butter chocolate,0,7
+3,Right,Sociology & Anthropology,English Literature,68,10,1.89482E+11,Strawberry balsamic vinegar,6,8

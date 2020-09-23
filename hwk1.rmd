@@ -1,0 +1,63 @@
+---
+title: "Coffee"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+Stat11Survey <- read.csv("C:/Users/pwhee/Documents/Stat11/Stat11Survey (1).csv")
+```
+
+## Question 1  
+```{r}
+dataSet <- c(3.4, 2, 3, 5)
+dataSetMean <- mean(dataSet)
+dataSetStandardDev <- sd(dataSet)
+```
+Data set arithmetic mean : `r dataSetMean`<br>
+Data set standard deviation: `r dataSetStandardDev`
+
+## Question 2  
+```{r}
+height <- Stat11Survey$Height
+hist(height, breaks=50, main="Stat 11 Class Height", xlab="height (in.)", ylab="number of students")
+```
+<br>The height distribution is unimodal and skews slightly right.
+
+## Question 3  
+```{r}
+summary(height)
+```
+<br>Summary() returns the mean and median as measures of central tendency, the maximum and minimum values to describe the range of the distribution, and the 1st and 3rd quartile to indicate the 25th and 75th percentile, respectively. The mean barely eclipsing the median serves as evidence that the distribution skews slightly right.
+
+## Question 4  
+```{r}
+boxplot(height)
+```
+<br>This boxplot confirms that the distribution is skewed slightly right as the median is lower than the middle of the distribution's range.
+
+
+## Question 5  
+```{r}
+coffee <- Stat11Survey$Coffee
+sleep <- Stat11Survey$Sleep
+plot(coffee, sleep, pch=18, col="red")
+boxplot(sleep~coffee)
+```
+<br>The gap between each box on the coffee-cup axis between is inconsistent, and this axis is not scaled to reflect the difference between the boxes. Furthermore, several of the boxes that only consist of a mean don't show any data point for the coffee-cup axis.
+
+## Question 6  
+```{r}
+noCoffee <- subset(Stat11Survey, Coffee == 0)
+yesCoffee <- subset(Stat11Survey, Coffee > 0)
+noCoffeeSleep <- noCoffee$Sleep
+yesCoffeeSleep <- yesCoffee$Sleep
+par(mfrow=c(1, 2))
+yAxis <- "hours of sleep per night"
+coffeeLabel <- "Drank Coffee"
+noCoffeeLabel <- "Drank No Coffee"
+boxplot(noCoffeeSleep, xlab=noCoffeeLabel, ylab=yAxis)
+boxplot(yesCoffeeSleep, xlab=coffeeLabel, ylab=yAxis)
+```

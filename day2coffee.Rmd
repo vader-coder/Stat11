@@ -1,0 +1,22 @@
+---
+title: "Coffee"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+Stat11Survey <- read.csv("C:/Users/pwhee/Documents/Stat11/Stat11Survey.csv")
+
+#("./Stat11Survey.csv")
+#("C:/Users/pwhee/Documents/Stat11/Stat11Survey.csv")
+#read.csv("C:/Users/pwhee/Downloads/Stat11Survey.csv")
+```
+
+## Coffee header
+This is a graph of coffee consumption
+```{r coffee}
+Coffee <- Stat11Survey$Coffee
+hist(Coffee, main="Stat 11 Coffee", xlab="Cups per week",breaks=12)
+#only name of data var was necessary, others were added
+```
+
