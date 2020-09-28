@@ -3,9 +3,9 @@ title: "hwk2"
 author: "Patrick Wheeler"
 date: "9/21/2020"
 output:
+  pdf_document: default
   html_document:
     df_print: paged
-  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}

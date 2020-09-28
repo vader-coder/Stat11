@@ -1,0 +1,126 @@
+---
+title: "hwk03"
+author: "Patrick Wheeler"
+date: "9/28/2020"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(FactoMineR)
+library(tinytex)
+data(decathlon)
+```
+
+## 1. Create a scatterplot (remember to label axes and include a title) with the results from the Shot put(I called this x <- decathlon$Shot.put) as the explanatory variable and the results from the Discus (I called this y) as the response variable. Both are measured in meters.  
+```{r}
+shotput <- decathlon$Shot.put
+discus <- decathlon$Discus
+plot1 <- plot(discus~shotput)
+model <- lm(discus~shotput)
+#abline(model)
+```
+  
+(a) Would it make sense if we switched the explanatory and response variables?   
+Yes, because there is no difference between claiming success in discuss throwing correlates with success in shot putting and claiming success in shot putting correlates with success in discuss throwing.  
+(b) Find the equation for the least squares regression line. Hint: function lm(y~x). Briefly describe in words what the slope indicates.  
+```{r}
+lm(discus~shotput)
+```
+The slope 2.523 indicates that the linear model predicts a ratio of approximately 2.523 between the distance a contestant throws a discus and the distance they shot put. It is unitless since both contests are measured in units of length.  
+(c) In a new plot, add the line to your plot (Hint: use the function abline() after your plot() function).
+```{r}
+plot(discus~shotput)
+abline(model)
+```
+   
+(d) What is the mean-mean point, and is it on the line you just drew?  
+The mean-mean point is the point ($\Xbar$, $\Ybar$) where the coordinates are the mean of the explanatory variable $\Xbar$ and the mean of the response variable $\Ybar$. The linear model should include this point but let's test it to make sure:  
+```{r}
+yBar = c(mean(discus))#mean of y: y-bar
+xBar = c(mean(shotput))#mean of x: x-bar
+meanMean = data.frame(xBar, yBar)
+plot(discus~shotput)
+abline(model)
+points(meanMean, col="red", pch=19)#(x-bar, y-bar) will be red.
+yBarPrediciton = 2.523*xBar[1]+7.801 #predict(model, data.frame(xBar)) 
+```
+$Ybar$ = `r yBar`  
+yBarPrediction = `r yBarPrediciton`  
+Given that ($\Xbar$,$\Ybar$) appears to be on the line when we plot it and that the equation returns an approximately correct value for $\Ybar$ when we evaluate it for $\Xbar$, the linear model includes the point.  
+(e) If an additional contestant threw the Shot put 13m, how far would you expect them to throw theDiscus? Would you be surprised if they in fact threw 1m more? 10m more? Briefly explain.   
+```{r}
+predictionE = 2.523*13+7.801
+```
+Using the linear model, I would predict that they would throw it about `r predictionE` meters. I would not be surprised if they threw 41.6 meters since that would put them barely above the linear model's prediction. However if they threw a full 10 meters I would be surprised since they would be an obvious outlier.
+
+
+2. Calculate the residuals of the linear model you found in #1. (I called this new vector e, remember that you can apply a formula to an entire vector)   
+```{r}
+mean = yBar[1]
+residuals <- vector(length=length(discus))
+i <- 1
+while (i <= length(discus)) {
+  residuals[i] = discus[i]-mean
+  i <- i+1
+}
+print(residuals)
+```
+(a) Create a new plot of the Shot put results vs these residuals.  
+```{r}
+plot(residuals~shotput)
+abline(h=0)
+residualsSd <- sd(residuals)
+discusSd <- sd(discus)
+r_2a <- cor(shotput, discus)
+rSquared <- r_2a*r_2a
+varianceDiscus <- discusSd*discusSd
+varianceResiduals <- residualsSd*residualsSd
+varianceDecrease <- 100*(varianceDiscus-varianceResiduals)/varianceDiscus
+```
+(b) What about this residual plot indicates that a linear model is a good or bad model?  
+This residual plot seems to be a bad model sine the data aren't clustered very closely to the mean horizontal line and the standard deviation of the residuals is `r residualsSd`.
+(c) What is the variance (standard deviation squared) of the results of the Discus?  
+`r varianceDiscus`  
+(d) What is the variance of the residuals you just found?  
+`r varianceResiduals`  
+(e) By what percentage did the the variance decrease?  
+`r varianceDecrease`%  
+(f) What is the correlation coefficient (r) squared?   
+$r^2 = $`r rSquared`   
+
+## 3. This question looks at what might happen if the data set contained a significant outlier. Suppose a decathlon contestant managed to throw the Shot put 25m, but could only throw the Discus 30m. Define new vectors to include this extra data point.  
+(I ran x2 <- append(decathlon$Shot.put,25) and a similar line for y2).  
+```{r}
+shotput2 <- append(decathlon$Shot.put, 25)
+discus2 <- append(decathlon$Discus, 30)
+```
+(a) Find the correlation coefficient and the equation for the least squares regression line.   
+```{r}
+r_3a <- cor(shotput2, discus2)
+model2 <- lm(discus2~shotput2)
+```
+(b) Create a new scatter plot comparing that includes this new point. Include the regression line.  
+```{r}
+plot(shotput2, discus2)
+abline(model2)
+```
+
+(c) In a sentence or two, describe what has changed from the plot you made in question #1.   
+Thanks to this new outlier, the slope of the linear model is slightly negative instead of positive. The model no longer reflects the general trend of the distribution.  
+
+The following is a table of the average distance from the sun of the 9 (back when Pluto was a planet)
+planets:
+(a) Create a scatterplot of the following data. Don’t forget to label your axes and give a title.  
+```{r}
+position <- c(1:9)
+distance <- c(36, 67, 93, 142, 484, 887, 1784, 2796, 3666)
+```
+(b) Why would you not want to talk about the correlation between planet position and the distancefrom the sun?  
+Planet position is just a listing of planets based on their relative distance from the sun. Since the variables depend on each other it doesn't make since to treat them as separate measurements that can be correlated. Furthermore, position is really a categorical variable whereas distance in millions of miles from the sun is a quantitiative variable.  
+(c) Make a scatterplot showing the logarithm of distance vs. position. What is better about this scatterplot?  
+(d) Create a model for the distance from the sun based on the planet’s position.  
+(e) Pluto is now no longer considered a planet, does your model suggest the Pluto may not belong inthe planet group? Explain.  
+This data suggests that Pluto is an outlier in terms of distance from the sun, however one could say the same about Neptune since each is approximately 1,000 million miles behind the next-closest planet. We would need to include data on volume or mass to determine whether Pluto is more of an outlier than Neptune.
