@@ -111,16 +111,30 @@ abline(model2)
 (c) In a sentence or two, describe what has changed from the plot you made in question #1.   
 Thanks to this new outlier, the slope of the linear model is slightly negative instead of positive. The model no longer reflects the general trend of the distribution.  
 
-The following is a table of the average distance from the sun of the 9 (back when Pluto was a planet)
+## 4. The following is a table of the average distance from the sun of the 9 (back when Pluto was a planet)
 planets:
 (a) Create a scatterplot of the following data. Don’t forget to label your axes and give a title.  
 ```{r}
 position <- c(1:9)
 distance <- c(36, 67, 93, 142, 484, 887, 1784, 2796, 3666)
+plot(position, distance, main="Planets Of Solar System", xlab="relative position (lower is closer to sun)", ylab="distance from sun (millions of miles)")
 ```
 (b) Why would you not want to talk about the correlation between planet position and the distancefrom the sun?  
 Planet position is just a listing of planets based on their relative distance from the sun. Since the variables depend on each other it doesn't make since to treat them as separate measurements that can be correlated. Furthermore, position is really a categorical variable whereas distance in millions of miles from the sun is a quantitiative variable.  
 (c) Make a scatterplot showing the logarithm of distance vs. position. What is better about this scatterplot?  
+```{r}
+dist_c <- log10(distance)
+plot(position, dist_c, xlab="position", ylab="log10(distance)")
+```
+   
 (d) Create a model for the distance from the sun based on the planet’s position.  
 (e) Pluto is now no longer considered a planet, does your model suggest the Pluto may not belong inthe planet group? Explain.  
 This data suggests that Pluto is an outlier in terms of distance from the sun, however one could say the same about Neptune since each is approximately 1,000 million miles behind the next-closest planet. We would need to include data on volume or mass to determine whether Pluto is more of an outlier than Neptune.
+
+##5. A regression is preformed to predict the selling price of houses. We found the following equation:̂
+price = 170,548 + 34.8Area + 0.768(Lot size)−6,457Age where Price is measured in dollars, Area in square feet, Lot size in square feet, and Age in years. 
+The R2 value is 0.91. One of the below interpretations is correct. Which is it? Explain what is wrong with the other statements.
+(a) Each year a house ages it is worth $6,457 less. False; every extra year in age is associated with a 6,457 decline in price for a given lot size and area.
+(b) This model fits 92% of the data points exactly. False; ? don't understand?
+(c) Every extra square foot of Area is associated with an additional $34.8 in average price, for houses with a given lot size and age. True.
+(d) Every dollar in price means Lot size increases 0.768 square feet. False; every extra square foot in lot size is associated with a 768-cent increase in price for a given area and age.
