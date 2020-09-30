@@ -128,13 +128,20 @@ plot(position, dist_c, xlab="position", ylab="log10(distance)")
 ```
    
 (d) Create a model for the distance from the sun based on the planet’s position.  
-(e) Pluto is now no longer considered a planet, does your model suggest the Pluto may not belong inthe planet group? Explain.  
-This data suggests that Pluto is an outlier in terms of distance from the sun, however one could say the same about Neptune since each is approximately 1,000 million miles behind the next-closest planet. We would need to include data on volume or mass to determine whether Pluto is more of an outlier than Neptune.
+```{r}
+model_planet <- lm(dist_c~position)
+plot(position, dist_c, xlab="position", ylab="log10(distance)")
+abline(model_planet)
+r_4d <- cor(position, dist_c)
+```
+r = `r r_4d`   
+(e) Pluto is now no longer considered a planet, does your model suggest the Pluto may not belong in the planet group? Explain.  
+Since Pluto's data point in plot of the position and the logarithm of the distance is close to the linear model and the correlation coefficient is `r r_4d`, this model suggests that Pluto does belong in the planet group. 
 
 ##5. A regression is preformed to predict the selling price of houses. We found the following equation:̂
 price = 170,548 + 34.8Area + 0.768(Lot size)−6,457Age where Price is measured in dollars, Area in square feet, Lot size in square feet, and Age in years. 
 The R2 value is 0.91. One of the below interpretations is correct. Which is it? Explain what is wrong with the other statements.
 (a) Each year a house ages it is worth $6,457 less. False; every extra year in age is associated with a 6,457 decline in price for a given lot size and area.
-(b) This model fits 92% of the data points exactly. False; ? don't understand?
+(b) This model fits 92% of the data points exactly. False; $R^2$ = 0.91 means that 91% of the variance in the response variable is explained by the three explanatory variables; we have no way of knowing how many of the data points intersect with the model.
 (c) Every extra square foot of Area is associated with an additional $34.8 in average price, for houses with a given lot size and age. True.
 (d) Every dollar in price means Lot size increases 0.768 square feet. False; every extra square foot in lot size is associated with a 768-cent increase in price for a given area and age.
